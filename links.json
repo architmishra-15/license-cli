@@ -1,0 +1,11 @@
+{
+  "mit":    "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/mit",
+  "apache-2.0": "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/apache-2.0",
+  "gpl-3":  "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/gpl-3",
+  "bsd-3":  "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/bsd-3",
+  "bsd-2":  "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/bsd-2",
+  "gnu-agpl": "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/gnu-agpl",
+  "gpl-2":  "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/gpl-2",
+  "mozilla-2": "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/mozilla-2",
+  "unlicense": "https://raw.githubusercontent.com/architmishra-15/license-cli/main/licenses/unlicense"
+}
