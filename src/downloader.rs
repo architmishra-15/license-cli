@@ -6,7 +6,7 @@ use regex::Regex;
 use std::io::{self, Write};
 
 const LINKS_JSON_URL: &str = 
-    "https://raw.githubusercontent.com/you/yourrepo/main/licenses/links.json";
+    "https://raw.githubusercontent.com/architmishra-15/license-cli/main/links.json";
 
 /// Download the JSON manifest of license → URL mappings.
 fn fetch_links_manifest() -> Result<HashMap<String,String>> {

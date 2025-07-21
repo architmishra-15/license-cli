@@ -75,10 +75,111 @@ fn add_license(name: &str, author: Option<String>) -> Result<()> {
     Ok(())
 }
 
+fn print_help() {
+    // Header
+    println!();
+    println!("{}", "License CLI Tool".bold().underline().blue());
+    println!();
+
+    // Synopsis
+    println!(
+        "{}\n  {}",
+        "Usage:".bold().bright_yellow(),
+        "license [OPTIONS] <SUBCOMMAND>"
+    );
+    println!();
+
+    // Global options
+    println!("{}", "Global Options:".bold().bright_green());
+    println!(
+        "  {}  {}    {}",
+        "-h, --help".cyan(),
+        "Print this help message".white(),
+        ""
+    );
+    println!(
+        "  {}  {}    {}",
+        "-v, --version".cyan(),
+        "Show version and author info".white(),
+        ""
+    );
+    println!();
+
+    // Subcommands
+    println!("{}", "Subcommands:".bold().bright_green());
+
+    // Show
+    println!(
+        "  {}        {}",
+        "show".magenta().bold(),
+        "List all locally cached licenses".white()
+    );
+
+    // Add
+    println!(
+        "  {} <name> {}",
+        "add".magenta().bold(),
+        "Install a license into your project".white()
+    );
+    println!(
+        " {} {}",
+        "--author <you>".cyan(),
+        "(override author field)".white()
+    );
+    println!();
+
+    // Examples
+    println!("{}", "Examples:".bold().bright_green());
+    println!(
+        "  {}",
+        "license show".yellow()
+    );
+    println!(
+        "  {}",
+        "license add mit".yellow()
+    );
+    println!(
+        "  {}",
+        "license add apache-2.0 --author \"Alice\"".yellow()
+    );
+    println!();
+
+    // Footer
+    println!(
+        "{}  {}",
+        "Repository:".bold(),
+        "https://github.com/architmishra-15/license-cli".underline().blue()
+    );
+    println!(
+        "{}  {}",
+        "Author:".bold(),
+        "Archit Mishra".cyan()
+    );
+    println!(
+        "{}  {}",
+        "Version:".bold(),
+        env!("CARGO_PKG_VERSION").green()
+    );
+    println!();
+}
+
 fn main() -> Result<()> {
     set_override(true);
 
     let cli = Cli::parse();
+
+    if cli.help {
+        print_help();
+        return Ok(());
+    }
+
+    if cli.version {
+        println!("license_cli {}", env!("CARGO_PKG_VERSION").green());
+        println!("Author: {}", "Archit Mishra".bold().italic().green());
+        println!("License: {}", "GPL-3.0".green());
+        println!("GitHub: {}", "https://github.com/architmishra-15/license-cli".bright_blue());
+        return Ok(());
+    }
 
     match cli.command {
         Some(Commands::List) => {
@@ -104,6 +205,14 @@ fn main() -> Result<()> {
                 }
                 std::process::exit(1);
             }
+        }
+
+        Some(Commands::Version) => {
+            println!("license_cli {}", env!("CARGO_PKG_VERSION").green());
+            println!("Author: {}", "Archit Mishra".bold().italic().green());
+            println!("License: {}", "GPL-3.0".green());
+            println!("GitHub: {}", "https://github.com/architmishra-15/license-cli".bright_blue());
+        return Ok(());
         }
 
         None => {
